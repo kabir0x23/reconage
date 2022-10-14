@@ -3,7 +3,10 @@ echo "reconage" | figlet
 echo "                  Created by TheCyberW0rld"
 
 read " Enter Subdomain , you want to enumerate:" dom
-
+if [$dom = ]
+  then 
+   echo "invalid subdomain"
+else 
 mkdir $dom && cd $dom 
 echo "Enumerating subdomains"
 echo ""
@@ -91,3 +94,4 @@ echo "Scanning for misconfiguration"
   nuclei -l subdomains.txt -t /root/nuclei-templates/misconfiguration | tee nuclei_misconfiguration.txt
 echo "Scanned for misconfiguration"
 echo "done"
+fi 
