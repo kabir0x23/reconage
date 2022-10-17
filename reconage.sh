@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "reconage" | figlet 
-echo "                  Created by TheCyberW0rld"
 
 read " Enter Subdomain , you want to enumerate:" dom
 if [$dom = ]
@@ -42,7 +41,6 @@ echo ""
 echo "fetching all urls with gau"
     resolve.subdomains.txt | gau | tee urls.txt >> /dev/null
 echo " all url fetched with gau"
-
 
 echo ""
 echo "sorting urls"
@@ -94,4 +92,23 @@ echo "Scanning for misconfiguration"
   nuclei -l subdomains.txt -t /root/nuclei-templates/misconfiguration | tee nuclei_misconfiguration.txt
 echo "Scanned for misconfiguration"
 echo "done"
+
+# Dev subdomains finder
+echo "finding dev subdomains..." | ~/go/bin/notify
+
+#dnsgen subdomains-$1.txt | tee dnsgen-subdomains-$1.txt
+#cat dnsgen-subdomains-$1.txt | sort -u | tee dev-subdomains-$1.txt
+echo "finished finding dev subdomains..." | ~/go/bin/notify
+
+# Live subdomains finder
+echo "live-recon started: $1" | ~/go/bin/notify
+
+cat subdomains-$1.txt | ~/go/bin/httprobe -c 80 | ~/go/bin/anew live-subdomains-$1.txt
+echo "httprobe: done" | ~/go/bin/notify -silent
+
+cat subdomains-$1.txt | ~/go/bin/httpx | ~/go/bin/anew live-subdomains-$1.txt
+echo "httpx: done" | ~/go/bin/notify -silent
+
+echo "total live subdomains: " | ~/go/bin/notify -silent
+cat live-subdomains-$1.txt | wc -l | ~/go/bin/notify -silent
 fi 
