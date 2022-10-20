@@ -112,3 +112,5 @@ echo "httpx: done" | ~/go/bin/notify -silent
 echo "total live subdomains: " | ~/go/bin/notify -silent
 cat live-subdomains-$1.txt | wc -l | ~/go/bin/notify -silent
 fi 
+
+echo "all things is done and arranged in proper way" | figlet
