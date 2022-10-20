@@ -126,10 +126,17 @@ echo "nikto completed it's task"
 nmap -sV --script=http-malware-host $dom
 nmap -p80 --script http-google-malware $
 
+
+# ip address vulnerability scanner
+echo $dom | uncover | httpx | nuclei >> /dev/null
+echo "Scanning done for vulnerabilities"
+
+
 # Netstat for all listening TCP and UDP ports
 
 echo "for all listening TCP ports : " netstat -lt
 echo "for all listening UDP ports : " netstat -lu
+
 
 fi 
 
