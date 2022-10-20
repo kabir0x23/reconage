@@ -114,7 +114,12 @@ cat live-subdomains-$1.txt | wc -l | ~/go/bin/notify -silent
 # nikto simple domain scan 
 
 echo "nikto simple domain scan : " nikto -h $dom >> /dev/null
-echo "nikto completed its task" 
+echo "nikto completed it's task" 
+
+# nikto For domains with HTTPS enabled
+
+echo "nikto For domains with HTTPS enabled : " nikto -h $dom -ssl >> /dev/null
+echo "nikto completed it's task"
 
 
 fi 
