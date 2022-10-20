@@ -123,9 +123,16 @@ echo "nikto completed it's task"
 
 # Nmap command for common malware scan
 
+
+# uncover for ip address enumeration
+echo "uncover for ip address enumeration" echo $dom | uncover >> /dev/null
+echo "uncover completed enumeration"
+
 nmap -sV --script=http-malware-host $dom
 nmap -p80 --script http-google-malware $dom
+
 
 fi 
 
 echo "all things is done and arranged in proper way" | figlet
+
