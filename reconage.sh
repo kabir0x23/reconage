@@ -137,6 +137,10 @@ echo "Scanning done for vulnerabilities"
 echo "for all listening TCP ports : " netstat -lt
 echo "for all listening UDP ports : " netstat -lu
 
+# Live ip filter
+echo $dom | uncover | httpx -mc 200 >> /dev/null
+echo "Filtered live ips"
+
 
 fi 
 
