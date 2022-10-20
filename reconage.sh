@@ -148,6 +148,10 @@ echo $dom | uncover | httpx -mc 200 >> /dev/null
 echo "Filtered live ips"
 
 
+# Hydra commands for FTP and SSH for username and password cracking
+echo "hydra -L user.txt -P pass.txt $dom ssh -t 4"
+echo "hydra -L user.txt -P pass.txt $dom ftp -t 4"
+
 fi 
 
 echo "all things is done and arranged in proper way" | figlet
