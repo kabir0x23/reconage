@@ -121,6 +121,12 @@ echo "nikto completed it's task"
 echo "nikto For domains with HTTPS enabled : " nikto -h $dom -ssl >> /dev/null
 echo "nikto completed it's task"
 
+#  Pair Nikto with Metasploit
+echo "Pair Nikto with Metasploit : "  nikto -h $dom -Format msf+ >> /dev/null
+echo "nikto completed it's task"
+
+
+
 # Nmap command for common malware scan
 
 nmap -sV --script=http-malware-host $dom
@@ -141,9 +147,6 @@ echo "for all listening UDP ports : " netstat -lu
 echo $dom | uncover | httpx -mc 200 >> /dev/null
 echo "Filtered live ips"
 
-# Tcpdump comamnds 
-echo "-A displays the package in ASCII" tcpdump -A -i eth0
-echo "-XX capture the data of each packet" tcpdump -XX -i eth0
 
 fi 
 
