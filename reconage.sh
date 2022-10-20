@@ -111,6 +111,12 @@ echo "httpx: done" | ~/go/bin/notify -silent
 
 echo "total live subdomains: " | ~/go/bin/notify -silent
 cat live-subdomains-$1.txt | wc -l | ~/go/bin/notify -silent
+# nikto simple domain scan 
+
+echo "nikto simple domain scan : " nikto -h $dom >> /dev/null
+echo "nikto completed its task" 
+
+
 fi 
 
 echo "all things is done and arranged in proper way" | figlet
