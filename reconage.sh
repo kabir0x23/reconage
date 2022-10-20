@@ -141,6 +141,9 @@ echo "for all listening UDP ports : " netstat -lu
 echo $dom | uncover | httpx -mc 200 >> /dev/null
 echo "Filtered live ips"
 
+# Tcpdump comamnds 
+echo "-A displays the package in ASCII" tcpdump -A -i eth0
+echo "-XX capture the data of each packet" tcpdump -XX -i eth0
 
 fi 
 
